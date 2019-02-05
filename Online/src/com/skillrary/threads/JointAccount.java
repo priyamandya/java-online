@@ -30,6 +30,14 @@ public class JointAccount implements Runnable {
 	private void withdrawCash(int amt) {
 		if(ca.getBalance()>=amt) {
 			System.out.println(Thread.currentThread().getName()+" will withdraw");
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ca.withdraw(amt);
+			System.out.println(Thread.currentThread().getName()+"completes the withdrawal");
 		}else {
 			System.out.println("Insuffienct fund Ms/Mr"+Thread.currentThread().getName()+"balance"+ ca.getBalance());
 		}
